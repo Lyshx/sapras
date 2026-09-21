@@ -13,6 +13,8 @@ if (isset($_POST['submit'])){
                 ('$id_barang','$nama_barang','$jumlah','$kondisi','$stok_barang','$lokasi')";
     mysqli_query($koneksi,$query);
     header ("location: index.php");
+    exit;
+} else {
+    echo "gagal menambahkan data";
 }
 ?>
-
