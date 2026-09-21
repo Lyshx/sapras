@@ -1,19 +1,9 @@
 <?php
-
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sapras";
-
-$koneksi = mysqli_connect($hostname, $username, $password, $dbname);
-
-if (!$koneksi) {
-    die("koneksi gagal: " . mysqli_connect_error());
-}
+include 'koneksi.php'
 session_start();
 
-if (!isset($_SESSION['peminjaman'])) {
-    $_SESSION['peminjaman'] = [
+if (!isset($_SESSION['barang'])) {
+    $_SESSION['barang'] = [
         ["nama" => "Ahmad (X TKJ 1)", "barang" => "Infocus Epson Model X400", "tgl" => "2026-09-01", "status" => "Dipinjam"],
         ["nama" => "Siti Nurhaliza (XI RPL 2)", "barang" => "Set Alat Pel & Ember", "tgl" => "2026-09-02", "status" => "Dikembalikan"],
         ["nama" => "Rizky (XII TKR 3)", "barang" => "Kabel HDMI 10m", "tgl" => "2026-09-03", "status" => "Dipinjam"]
@@ -21,15 +11,20 @@ if (!isset($_SESSION['peminjaman'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nama_peminjam = htmlspecialchars($_POST['nama']);
-    $nama_barang = htmlspecialchars($_POST['barang']);
-    $tanggal = date("Y-m-d");
+    $id_barang = htmlspecialchars($_POST['id_barang']);
+    $nama_barang = htmlspecialchars($_POST['nama_barang']);
+    $jumlah = htmlspecialchars($_POST['jumlah']);
+    $kondisi = htmlspecialchars($_POST['kondisi']);
+    $stok_barang = htmlspecialchars($_POST['stok_barang']);
+    $lokasi = htmlspecialchars($_POST['lokasi']);
 
-    $_SESSION['peminjaman'][] = [
-        "id_peminjaman" => $nama_peminjam,
+    $_SESSION['barang'][] = [
+        "id_barang" => $id_barang,
         "nama_barang" => $nama_barang,
-        "jumlah" => $tanggal,
-        "status" => "Dipinjam"
+        "jumlah" => $jumlah,
+        "kondisi" => $kondisi,
+        "stok_barang" => $stok_barang,
+        "lokasi" => "lokasi"
     ];
     
     header("Location: index.php#daftar-peminjaman");
@@ -162,26 +157,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>ID Peminjam</th>
-                    <th>Hari</th>
-                    <th>Tanggal</th>
-                    <th>Jam Pinjam</th>
-                    <th>Jam Selesai</th>
+                    <th>ID Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Jumlah</th>
+                    <th>Kondisi</th>
+                    <th>Stok Barang</th>
+                    <th>Lokasi</th>
+                    <th>Status</th>
                 </tr>
             </thead>
                 <tbody>
                     <?php 
                     $no = 1;
-                    foreach ($_SESSION['peminjaman'] as $row): 
+                    foreach ($_SESSION['barang'] as $row): 
                         $badgeClass = ($row['status'] == 'Dipinjam') ? 'badge-dipinjam' : 'badge-dikembalikan';
                     ?>
                     <tr>
                         <td><?= $no++; ?></td>
-                        <td><strong><?= $row['id_peminjam']; ?></strong></td>
-                        <td><?= $row['hari']; ?></td>
-                        <td><?= $row['tanggal']; ?></td>
-                        <td><?= $row['jam_pinjam']; ?></td>
-                        <td><?= $row['jam_selesai']; ?></td>
+                        <td><?= $row['id_barang']; ?></td>
+                        <td><?= $row['nama_barang']; ?></td>
+                        <td><?= $row['jumlah']; ?></td>
+                        <td><?= $row['kondisi']; ?></td>
+                        <td><?= $row['stok_barang']; ?></td>
+                        <td><?= $row['lokasi']; ?></td>
                         <td><span class="badge <?= $badgeClass; ?>"><?= $row['status']; ?></span></td>
                     </tr>
                     <?php endforeach; ?>
