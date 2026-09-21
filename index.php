@@ -127,14 +127,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </section>
 
         <!-- Form Peminjaman -->
+         
         <section id="peminjaman">
             <h2>Form Pengajuan Peminjaman</h2>
             <form action="index.php" method="POST" id="formPeminjaman">
-                <label for="nama">Id_peminjam:</label>
-                <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso (XII TKR 1)" required>
-                <label for="nama">hari</label>
-                <input type="text" id="nama" name="nama" placeholder="Contoh: 14:14" required>
-                <label for="barang">tanggal</label>
+                <label for="id_barang">Id barang</label>
+        <input type="text" id="id_barang" name="id_barang" placeholder="Masukkan id barang">
+
+        <label for="nama_barang">nama barang</label>
+        <input type="text" id="nama_barang" name="nama_barang" placeholder="Masukkan nama barang">
+
+        <label for="jumlah">jumlah</label>
+        <input type="text" id="jumlah" name="jumlah" placeholder="Masukkan jumlah">
+
+        <label for="kondisi">kondisi</label>
+        <input type="text" id="kondisi" name="kondisi" placeholder="Masukkan kondisi">
+
+        <label for="stok_barang">stok barang</label>
+        <input type="text" id="stok_barang" name="stok_barang" placeholder="Masukkan stok barang">
+
+        <label for="lokasi">lokasi</label>
+        <input type="text" id="lokasi" name="lokasi" placeholder="Masukkan lokasi">
                 <select id="barang" name="barang" required>
                     <option value="">-- Pilih Barang --</option>
                     <option value="Infocus Epson Model X400">Infocus Epson Model X400</option>
@@ -144,7 +157,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <option value="Sapu & Pengki Set">Sapu & Pengki Set</option>
                 </select>
 
-                <button type="submit">Kirim Ajukan Peminjaman</button>
+                <button type="submit" name="submit">Simpan</button>
+
             </form>
         </section>
 
