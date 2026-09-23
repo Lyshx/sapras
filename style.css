@@ -19,23 +19,35 @@ header {
     text-align: center;
 }
 
+/* --- Flexbox Navbar (Desktop) --- */
 nav {
     background: #0f172a;
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 12px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
+.nav-brand {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
 nav a {
     color: #cbd5e1;
     text-decoration: none;
     font-weight: 600;
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 6px;
     transition: all 0.3s ease;
 }
@@ -45,7 +57,46 @@ nav a:hover {
     color: white;
 }
 
-/* --- Dynamic Hero Banner --- */
+/* Tombol Hamburger (Sembunyi di Desktop) */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block; 
+    }
+
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #0f172a;
+        padding: 15px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    }
+
+    
+    .nav-links.active {
+        display: flex;
+    }
+
+    nav a {
+        padding: 10px;
+        text-align: center;
+    }
+}}
+
+
 .hero-banner {
     width: 100%;
     height: 380px;

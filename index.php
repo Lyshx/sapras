@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php'
+include 'koneksi.php';
 session_start();
 
 if (!isset($_SESSION['barang'])) {
@@ -43,16 +43,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
     <header>
-        <h1>SMK Negeri 1 Maja</h1>
+        <h1>SMK NEGRI 1 MAJA</h1>
     </header>
 
     <nav>
+    
+      
+    <div class="nav-links" id="navLinks">
         <a href="#beranda">Kegunaan</a>
         <a href="#staff">Staff Sarpras</a>
         <a href="#inventaris">Daftar Alat</a>
         <a href="#peminjaman">Form Peminjaman</a>
         <a href="#daftar-peminjaman">Data Peminjaman</a>
-    </nav>
+    </div>
+</nav>
 
     <div class="hero-banner">
         <h2>Sistem Informasi Sarpras</h2>
@@ -63,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <!-- Kegunaan Sarpras -->
         <section id="beranda">
+            <section id="beranda" style="text-align: center;">
             <h2>Kegunaan Sarpras di SMK 1 Maja</h2>
             <p>Divisi Sarana dan Prasarana (Sarpras) SMK 1 Maja memegang peranan krusial dalam menyediakan, memelihara, serta mengoptimalkan seluruh aset sekolah. Mulai dari penyediaan perangkat penunjang digital pembelajaran hingga kebersihan area kampus sekolah, Sarpras hadir untuk memastikan proses belajar-mengajar berlangsung aman dan nyaman.</p>
         </section>
