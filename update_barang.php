@@ -1,23 +1,20 @@
 <?php
 include "koneksi.php";
 
-// Tangkap id_barang dari URL (GET)
+// 1. Ambil id_barang dari URL (saat pertama kali halaman dibuka)
 $id_barang = $_GET['id_barang'] ?? null;
 
-// Jika id_barang tidak ada di URL, kembalikan ke index.php
-if (!$id_barang) {
-    header("Location: index.php");
-    exit;
-}
-
-// Proses UPDATE saat form disubmit
+// 2. Jika Form Disubmit (Tombol Update diklik)
 if (isset($_POST['submit'])) {
-    $nama_barang = mysqli_real_escape_string($koneksi, $_POST['nama_barang']);
-    $jumlah      = mysqli_real_escape_string($koneksi, $_POST['jumlah']);
-    $kondisi     = mysqli_real_escape_string($koneksi, $_POST['kondisi']);
-    $stok_barang = mysqli_real_escape_string($koneksi, $_POST['stok_barang']);
-    $lokasi      = mysqli_real_escape_string($koneksi, $_POST['lokasi']);
+    // Tangkap id_barang dari input hidden
+    $id_barang   = $_POST['id_barang_hidden'];
+    $nama_barang = $_POST['nama_barang'];
+    $jumlah      = $_POST['jumlah'];
+    $kondisi     = $_POST['kondisi'];
+    $stok_barang = $_POST['stok_barang'];
+    $lokasi      = $_POST['lokasi'];
 
+    // Query UPDATE yang valid dan terhubung ke database
     $query = "UPDATE barang SET 
                 nama_barang = '$nama_barang', 
                 jumlah      = '$jumlah', 
@@ -26,23 +23,26 @@ if (isset($_POST['submit'])) {
                 lokasi      = '$lokasi' 
               WHERE id_barang = '$id_barang'";
 
-    if (mysqli_query($koneksi, $query)) {
-        header("Location: index.php");
+    $execute = mysqli_query($koneksi, $query);
+
+    if ($execute) {
+        // Jika berhasil, kembali ke tabel data barang
+        header("Location: tampil_barang.php");
         exit;
     } else {
-        echo "Gagal mengupdate data: " . mysqli_error($koneksi);
+        // Jika gagal, tampilkan pesan error mysql
+        echo "Gagal mengupdate database: " . mysqli_error($koneksi);
     }
 }
 
-// Ambil data lama berdasarkan id_barang
-$query_lama = "SELECT * FROM barang WHERE id_barang = '$id_barang'";
-$hasil_lama = mysqli_query($koneksi, $query_lama);
-$data       = mysqli_fetch_assoc($hasil_lama);
-
-// Jika data tidak ditemukan di database
-if (!$data) {
-    echo "Data barang tidak ditemukan!";
-    exit;
+// 3. Ambil data lama untuk ditampilkan di dalam form
+$data = null;
+if ($id_barang) {
+    $query_lama = "SELECT * FROM barang WHERE id_barang = '$id_barang'";
+    $hasil_lama = mysqli_query($koneksi, $query_lama);
+    if ($hasil_lama && mysqli_num_rows($hasil_lama) > 0) {
+        $data = mysqli_fetch_assoc($hasil_lama);
+    }
 }
 ?>
 
@@ -51,35 +51,40 @@ if (!$data) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Data Barang</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Update Data Barang</title>
 </head>
 <body>
-    <div class="container" style="margin-top: 50px;">
-        <h2>Form Edit Barang (ID: <?= htmlspecialchars($data['id_barang']); ?>)</h2>
-        
-        <form action="update_barang.php?id_barang=<?= urlencode($id_barang); ?>" method="POST">
-            <label for="id_barang">ID Barang (Tidak dapat diubah)</label>
-            <input type="text" id="id_barang" name="id_barang" value="<?= htmlspecialchars($data['id_barang']); ?>" disabled>
+    <h2>Form Update Barang</h2>
 
-            <label for="nama_barang">Nama Barang</label>
-            <input type="text" id="nama_barang" name="nama_barang" value="<?= htmlspecialchars($data['nama_barang']); ?>" required>
+    <?php if ($data): ?>
+    <form action="update_barang.php" method="POST">
+        <!-- Input hidden agar id_barang tetap terkirim saat form disubmit -->
+        <input type="hidden" name="id_barang_hidden" value="<?= $data['id_barang']; ?>">
 
-            <label for="jumlah">Jumlah</label>
-            <input type="number" id="jumlah" name="jumlah" value="<?= htmlspecialchars($data['jumlah']); ?>" required>
+        <label>ID Barang (Tidak dapat diubah):</label><br>
+        <input type="text" value="<?= $data['id_barang']; ?>" disabled><br><br>
 
-            <label for="kondisi">Kondisi</label>
-            <input type="text" id="kondisi" name="kondisi" value="<?= htmlspecialchars($data['kondisi']); ?>" required>
+        <label>Nama Barang:</label><br>
+        <input type="text" name="nama_barang" value="<?= $data['nama_barang']; ?>" required><br><br>
 
-            <label for="stok_barang">Stok Barang</label>
-            <input type="number" id="stok_barang" name="stok_barang" value="<?= htmlspecialchars($data['stok_barang']); ?>" required>
+        <label>Jumlah:</label><br>
+        <input type="text" name="jumlah" value="<?= $data['jumlah']; ?>" required><br><br>
 
-            <label for="lokasi">Lokasi</label>
-            <input type="text" id="lokasi" name="lokasi" value="<?= htmlspecialchars($data['lokasi']); ?>" required>
+        <label>Kondisi:</label><br>
+        <input type="text" name="kondisi" value="<?= $data['kondisi']; ?>" required><br><br>
 
-            <button type="submit" name="submit">Update Data</button>
-            <a href="index.php" style="display:inline-block; margin-top:10px; text-align:center; color:#2563eb;">Batal</a>
-        </form>
-    </div>
+        <label>Stok Barang:</label><br>
+        <input type="text" name="stok_barang" value="<?= $data['stok_barang']; ?>" required><br><br>
+
+        <label>Lokasi:</label><br>
+        <input type="text" name="lokasi" value="<?= $data['lokasi']; ?>" required><br><br>
+
+        <button type="submit" name="submit">Update Data</button>
+        <a href="tampil_barang.php">Batal</a>
+    </form>
+    <?php else: ?>
+        <p style="color: red;">Data barang tidak ditemukan atau ID tidak valid!</p>
+        <a href="tampil_barang.php">Kembali ke Tabel Barang</a>
+    <?php endif; ?>
 </body>
 </html>
