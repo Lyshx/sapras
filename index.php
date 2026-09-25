@@ -129,19 +129,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
         <!-- Kartu Visual Inventaris -->
         <section id="inventaris">
-            <h2>Peralatan Utama (Infocus & Kebersihan)</h2>
+            <h2>Peralatan Utama (Infocus)</h2>
             <div class="inventory-grid">
                 <div class="inventory-card">
-                    <img src="https://picsum.photos/100/100?projector" alt="Infocus Proyektor">
+                    <img src="proyektor.jpg" alt="Infocus Proyektor">
                     <div>
                         <h4>Infocus Epson X400</h4>
                         <p>Stok: 5 Unit (Tersedia)</p>
                     </div>
                 </div>
                 <div class="inventory-card">
-                    <img src="https://picsum.photos/100/100?cleaning" alt="Alat Kebersihan">
+                    <img src="alat-kebersihan.jpg" alt="Alat Kebersihan">
                     <div>
-                        <h4>Set Alat Pel & Ember</h4>
+                        <h4>Set Alat kebersihan</h4>
                         <p>Stok: 8 Set (Tersedia)</p>
                     </div>
                 </div>
