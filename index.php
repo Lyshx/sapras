@@ -95,32 +95,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             <h2>Daftar Staff Sarpras</h2>
             <div class="staff-grid">
                 <div class="staff-card">
-                    <img src="https://i.pravatar.cc/150?img=11" alt="Budi Priatna, M.T">
+                    <img src="Assets/Pak Budi.png" alt="Budi Priatna, M.T">
                     <h3>Budi Priatna, M.T</h3>
                     <p>Wakasek Bidang Sarpras</p>
                 </div>
                 <div class="staff-card">
-                    <img src="https://i.pravatar.cc/150?img=60" alt="Dede Ibrahim">
+                    <img src="Assets/Pak Dede.png" alt="Dede Ibrahim">
                     <h3>Dede Ibrahim</h3>
                     <p>Staff Sarpras Bidang Teknisi</p>
                 </div>
                 <div class="staff-card">
-                    <img src="https://i.pravatar.cc/150?img=47" alt="Lala Kusmala, S.Pd">
+                    <img src="Assets/Pak Lala.png" alt="Lala Kusmala, S.Pd">
                     <h3>Lala Kusmala, S.Pd</h3>
                     <p>Staff Sarpras Bidang Lingkungan</p>
                 </div>
                 <div class="staff-card">
-                    <img src="https://i.pravatar.cc/150?img=12" alt="Agus Santosa, S.T. M.T">
+                    <img src="Assets/Pak Agus.png" alt="Agus Santosa, S.T. M.T">
                     <h3>Agus Santosa, S.T. M.T</h3>
                     <p>Staff Sarpras Bidang Jaringan</p>    
                 </div>
                 <div class="staff-card">
-                    <img src="https://i.pravatar.cc/150?img=13" alt="Ade Ali Ridwan, S. Pd">
+                    <img src="Assets/Pak Ade.png" alt="Ade Ali Ridwan, S. Pd">
                     <h3>Ade Ali Ridwan, S. Pd</h3>
                     <p>Staff Sarpras Bidang Aset</p>    
                 </div>
                 <div class="staff-card">
-                    <img src="https://i.pravatar.cc/150?img=14" alt="Nanda Juanda Dipura Atmaja, S. Kom">
+                    <img src="Assets/Pak Nanda.png" alt="Nanda Juanda Dipura Atmaja, S. Kom">
                     <h3>Nanda Juanda Dipura Atmaja, S. Kom</h3>
                     <p>Staff Sarpras Bidang Aset</p>    
                 </div>
@@ -132,14 +132,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             <h2>Peralatan Utama (Infocus)</h2>
             <div class="inventory-grid">
                 <div class="inventory-card">
-                    <img src="proyektor.jpg" alt="Infocus Proyektor">
+                    <img src="Assets/proyektor.jpg" alt="Infocus Proyektor">
                     <div>
                         <h4>Infocus Epson X400</h4>
                         <p>Stok: 5 Unit (Tersedia)</p>
                     </div>
                 </div>
                 <div class="inventory-card">
-                    <img src="alat-kebersihan.jpg" alt="Alat Kebersihan">
+                    <img src="Assets/alat kebersihan.jpg" alt="Alat Kebersihan">
                     <div>
                         <h4>Set Alat kebersihan</h4>
                         <p>Stok: 8 Set (Tersedia)</p>

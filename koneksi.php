@@ -1,12 +1,6 @@
 <?php
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sapras";
-
-$koneksi = mysqli_connect($hostname, $username, $password, $dbname);
-
+$koneksi = mysqli_connect("localhost", "root", "", "sapras");
 if (!$koneksi) {
-    die("koneksi gagal: " . mysqli_connect_error());
+    die("Koneksi gagal: " . mysqli_connect_error());
 }
 ?>
