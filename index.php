@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
         <!-- Kartu Visual Inventaris -->
         <section id="inventaris">
-            <h2>Peralatan Utama (Infocus)</h2>
+            <h2>Peralatan Utama (Infocus & alat kebersihan)</h2>
             <div class="inventory-grid">
                 <div class="inventory-card">
                     <img src="proyektor.jpg" alt="Infocus Proyektor">
