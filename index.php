@@ -8,6 +8,7 @@ if (!isset($_SESSION['barang'])) {
         ["nama" => "Siti Nurhaliza (XI RPL 2)", "barang" => "Set Alat Pel & Ember", "tgl" => "2026-09-02", "status" => "Dikembalikan"],
         ["nama" => "Rizky (XII TKR 3)", "barang" => "Kabel HDMI 10m", "tgl" => "2026-09-03", "status" => "Dipinjam"]
     ];
+    
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
