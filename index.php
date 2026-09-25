@@ -132,14 +132,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             <h2>Peralatan Utama (Infocus)</h2>
             <div class="inventory-grid">
                 <div class="inventory-card">
-                    <img src="proyektor.jpg" alt="Infocus Proyektor">
+                    <img src="Assets/proyektor.jpg" alt="Infocus Proyektor">
                     <div>
                         <h4>Infocus Epson X400</h4>
                         <p>Stok: 5 Unit (Tersedia)</p>
                     </div>
                 </div>
                 <div class="inventory-card">
-                    <img src="alat-kebersihan.jpg" alt="Alat Kebersihan">
+                    <img src="Assets/alat kebersihan.jpg" alt="Alat Kebersihan">
                     <div>
                         <h4>Set Alat kebersihan</h4>
                         <p>Stok: 8 Set (Tersedia)</p>
