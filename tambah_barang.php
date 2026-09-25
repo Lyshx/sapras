@@ -11,7 +11,7 @@ if (isset($_POST['submit'])){
 
     $query = "INSERT INTO barang
                 (id_barang,nama_barang,jumlah,kondisi,stok_barang,lokasi) VALUES
-                ('$id_barang,$nama_barang,$jumlah,$kondisi,$stok_barang,$lokasi')";
+                ('$id_barang','$nama_barang','$jumlah','$kondisi','$stok_barang','$lokasi')";
     mysqli_query($koneksi,$query);
     header ("location: index.php");
 }
@@ -22,7 +22,6 @@ if (isset($_POST['submit'])){
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Barang di sapras</title>
-
     <style>
         body {
             margin: 0;
@@ -92,7 +91,7 @@ if (isset($_POST['submit'])){
 
 <body>
     <form action="" method="POST">
-
+    <h1>Tambah Barang</h1>
         <label for="id_barang">id barang</label>
         <input type="text" id="id_barang" name="id_barang" placeholder="Masukkan id barang">
 

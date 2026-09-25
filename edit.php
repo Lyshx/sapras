@@ -1,28 +1,18 @@
 <?php
 include "koneksi.php";
-// 1. Koneksi ke Database
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "sapras";
 
-$koneksi = mysqli_connect($host, $user, $pass, $db);
-
-if (!$koneksi) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
-
-// 2. Ambil ID dari URL
 if (!isset($_GET['id'])) {
-    header("Location: index.php"); 
+    header("Location: index.php");
     exit();
 }
 
-$id = $_GET['id'];
+$id = (int)$_GET['id'];
 
-
-$query = "SELECT * FROM barang WHERE id = '$id'"; 
-$result = mysqli_query($koneksi, $query);
+$query = "SELECT * FROM barang WHERE id = ?";
+$stmt = mysqli_prepare($koneksi, $query);
+mysqli_stmt_bind_param($stmt, "i", $id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 $data = mysqli_fetch_assoc($result);
 
 if (!$data) {
@@ -31,18 +21,19 @@ if (!$data) {
 }
 
 if (isset($_POST['update'])) {
-    $id =$_POST['id'];
-    $id_barang =$_POST['id_barang'];
-    $nama_barang =$_POST['nama_barang'];
-    $jumlah =$_POST['jumlah'];
-     $kondisi =$_POST['kondisi'];
-      $stok_barang =$_POST['stok_barang'];
-      $lokasi =$_POST['lokasi'];
-    // Query untuk memperbarui data
-    $update_query = "UPDATE barang SET id_barang = '$id_barang', nama_barang = '$nama_barang', jumlah = '$jumlah', kondisi = '$kondisi', stok_barang = '$stok_barang', lokasi = '$lokasi' WHERE id = '$id'";
-    $execute = mysqli_query($koneksi, $update_query);
+    $id = (int)$_POST['id'];
+    $id_barang = trim($_POST['id_barang']);
+    $nama_barang = trim($_POST['nama_barang']);
+    $jumlah = trim($_POST['jumlah']);
+    $kondisi = trim($_POST['kondisi']);
+    $stok_barang = trim($_POST['stok_barang']);
+    $lokasi = trim($_POST['lokasi']);
 
-    if ($execute) {
+    $update_query = "UPDATE barang SET id_barang = ?, nama_barang = ?, jumlah = ?, kondisi = ?, stok_barang = ?, lokasi = ? WHERE id = ?";
+    $stmt = mysqli_prepare($koneksi, $update_query);
+    mysqli_stmt_bind_param($stmt, "sssssi", $id_barang, $nama_barang, $jumlah, $kondisi, $stok_barang, $lokasi, $id);
+
+    if (mysqli_stmt_execute($stmt)) {
         header("Location: index.php?status=success");
         exit();
     } else {
@@ -55,33 +46,56 @@ if (isset($_POST['update'])) {
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Data</title>
+    <title>Edit Data Barang</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; }
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 5px; }
-        input[type="text"], input[type="email"] { width: 300px; padding: 8px; }
+        input[type="text"] { width: 300px; padding: 8px; }
         button { padding: 8px 15px; background-color: #28a745; color: white; border: none; cursor: pointer; }
         .error { color: red; margin-bottom: 15px; }
+        a { text-decoration: none; color: #333; }
     </style>
 </head>
 <body>
 
-    <h2>Edit Data Pengguna</h2>
+    <h2>Edit Data Barang</h2>
 
     <?php if (isset($error)): ?>
         <p class="error"><?php echo $error; ?></p>
     <?php endif; ?>
 
     <form action="" method="POST">
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($data['id']); ?>">
+
         <div class="form-group">
-            <label for="nama">Nama:</label>
-            <input type="text" id="nama" name="nama" value="<?php echo htmlspecialchars($data['nama']); ?>" required>
+            <label for="id_barang">ID Barang:</label>
+            <input type="text" id="id_barang" name="id_barang" value="<?php echo htmlspecialchars($data['id_barang']); ?>" required>
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($data['email']); ?>" required>
+            <label for="nama_barang">Nama Barang:</label>
+            <input type="text" id="nama_barang" name="nama_barang" value="<?php echo htmlspecialchars($data['nama_barang']); ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="jumlah">Jumlah:</label>
+            <input type="text" id="jumlah" name="jumlah" value="<?php echo htmlspecialchars($data['jumlah']); ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="kondisi">Kondisi:</label>
+            <input type="text" id="kondisi" name="kondisi" value="<?php echo htmlspecialchars($data['kondisi']); ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="stok_barang">Stok Barang:</label>
+            <input type="text" id="stok_barang" name="stok_barang" value="<?php echo htmlspecialchars($data['stok_barang']); ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="lokasi">Lokasi:</label>
+            <input type="text" id="lokasi" name="lokasi" value="<?php echo htmlspecialchars($data['lokasi']); ?>" required>
         </div>
 
         <button type="submit" name="update">Simpan Perubahan</button>
