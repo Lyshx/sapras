@@ -2,16 +2,18 @@
 include "koneksi.php";
 if (isset($_POST['submit'])){
     $id =$_POST['id'];
-    $id_barang =$_POST['id_barang'];
-    $nama_barang =$_POST['nama_barang'];
-    $jumlah =$_POST['jumlah'];
-     $kondisi =$_POST['kondisi'];
-      $stok_barang =$_POST['stok_barang'];
-      $lokasi =$_POST['lokasi'];
+    $nis =$_POST['nis'];
+    $nama_siswa =$_POST['nama_siswa'];
+    $kelas =$_POST['kelas'];
+    $jenis_kelamin =$_POST['jenis_kelamin'];
+    $jurusan =$_POST['jurusan'];
+    $no_hp =$_POST['no_hp'];
 
-    $query = "INSERT INTO barang
-                (id_barang,nama_barang,jumlah,kondisi,stok_barang,lokasi) VALUES
-                ('$id_barang','$nama_barang','$jumlah','$kondisi','$stok_barang','$lokasi')";
+
+
+    $query = "INSERT INTO siswa
+                (id,nis,nama_siswa,kelas,jenis_kelamin,jurusan,no_hp) VALUES
+                ('$id','$nis','$nama_siswa','$kelas','$jenis_kelamin','$jurusan','$no_hp')";
     mysqli_query($koneksi,$query);
     header ("location: index.php");
 }
@@ -21,7 +23,7 @@ if (isset($_POST['submit'])){
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Barang di sapras</title>
+    <title>Tambah Siswa</title>
     <style>
         body {
             margin: 0;
@@ -91,27 +93,30 @@ if (isset($_POST['submit'])){
 
 <body>
     <form action="" method="POST">
-    <h1>Tambah Barang</h1>
-        <label for="id_barang">id barang</label>
-        <input type="text" id="id_barang" name="id_barang" placeholder="Masukkan id barang">
+    <h1>Tambah Siswa</h1>
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id" placeholder="Masukkan ID">
 
-        <label for="ukuran">nama barang</label>
-        <input type="text" id="nama_barang" name="nama_barang" placeholder="Masukkan nama barang">
+        <label for="nis">NIS</label>
+        <input type="text" id="nis" name="nis" placeholder="Masukkan NIS">
 
-        <label for="harga_sepatu">jumlah</label>
-        <input type="text" id="jumlah" name="jumlah" placeholder="Masukkan jumlah">
+        <label for="nama_siswa">Nama Siswa</label>
+        <input type="text" id="nama_siswa" name="nama_siswa" placeholder="Masukkan nama siswa">
 
-        <label for="harga_sepatu">kondisi</label>
-        <input type="text" id="kondisi" name="kondisi" placeholder="Masukkan kondisi">
+        <label for="kelas">Kelas</label>
+        <input type="text" id="kelas" name="kelas" placeholder="Masukkan kelas">
 
-        <label for="harga_sepatu">stok barang</label>
-        <input type="text" id="stok_barang" name="stok_barang" placeholder="Masukkan stok barang">
+        <label for="jenis_kelamin">Jenis Kelamin</label>
+        <select id="jenis_kelamin" name="jenis_kelamin">
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
 
-        <label for="harga_sepatu">lokasi</label>
-        <input type="text" id="lokasi" name="lokasi" placeholder="Masukkan lokasi">
+        <label for="jurusan">Jurusan</label>
+        <input type="text" id="jurusan" name="jurusan" placeholder="Masukkan jurusan">
 
-
-
+        <label for="no_hp">No HP</label>
+        <input type="text" id="no_hp" name="no_hp" placeholder="Masukkan no hp">
 
         <button type="submit" name="submit">Simpan</button>
 

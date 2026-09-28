@@ -25,7 +25,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
+    padding: 5px 10px;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -101,13 +101,11 @@ nav a:hover {
 .hero-banner {
     width: 100%;
     min-height: 400px;
-    /* Overlay hitam transparan agar teks terlihat kontras */
-    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)); 
+    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7));
     background-image: url('Assets/smkn 1 maja.jpeg');
-    background-position: center 40%;
+    background-position: center 35%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: scroll;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -290,7 +288,6 @@ form {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 550px;
     background: #f8fafc;
     padding: 24px;
     border-radius: 10px;

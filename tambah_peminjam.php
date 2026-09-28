@@ -1,17 +1,16 @@
 <?php
 include "koneksi.php";
 if (isset($_POST['submit'])){
-    $id =$_POST['id'];
-    $id_barang =$_POST['id_barang'];
-    $nama_barang =$_POST['nama_barang'];
-    $jumlah =$_POST['jumlah'];
-     $kondisi =$_POST['kondisi'];
-      $stok_barang =$_POST['stok_barang'];
-      $lokasi =$_POST['lokasi'];
+    $id_peminjam =$_POST['id_peminjam'];
+    $hari =$_POST['hari'];
+    $tanggal =$_POST['tanggal'];
+    $jam_pinjam =$_POST['jam_pinjam'];
+    $jam_selesai =$_POST['jam_selesai'];
 
-    $query = "INSERT INTO barang
-                (id_barang,nama_barang,jumlah,kondisi,stok_barang,lokasi) VALUES
-                ('$id_barang','$nama_barang','$jumlah','$kondisi','$stok_barang','$lokasi')";
+
+    $query = "INSERT INTO peminjam
+                (id_peminjam,hari,tanggal,jam_pinjam,jam_selesai) VALUES
+                ('$id_peminjam','$hari','$tanggal','$jam_pinjam','$jam_selesai')";
     mysqli_query($koneksi,$query);
     header ("location: index.php");
 }
@@ -21,7 +20,7 @@ if (isset($_POST['submit'])){
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Barang di sapras</title>
+    <title>Tambah Siswa</title>
     <style>
         body {
             margin: 0;
@@ -91,28 +90,22 @@ if (isset($_POST['submit'])){
 
 <body>
     <form action="" method="POST">
-    <h1>Tambah Barang</h1>
-        <label for="id_barang">id barang</label>
-        <input type="text" id="id_barang" name="id_barang" placeholder="Masukkan id barang">
+    <h1>Tambah Peminjam</h1>
+        <label for="id_peminjam">ID Peminjam</label>
+        <input type="text" id="id_peminjam" name="id_peminjam" placeholder="Masukkan ID Peminjam">
 
-        <label for="ukuran">nama barang</label>
-        <input type="text" id="nama_barang" name="nama_barang" placeholder="Masukkan nama barang">
+        <label for="hari">Hari</label>
+        <input type="text" id="hari" name="hari" placeholder="Masukkan Hari">
 
-        <label for="harga_sepatu">jumlah</label>
-        <input type="text" id="jumlah" name="jumlah" placeholder="Masukkan jumlah">
+        <label for="tanggal">Tanggal</label>
+        <input type="text" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal">
 
-        <label for="harga_sepatu">kondisi</label>
-        <input type="text" id="kondisi" name="kondisi" placeholder="Masukkan kondisi">
+        <label for="jam_pinjam">Jam Pinjam</label>
+        <input type="text" id="jam_pinjam" name="jam_pinjam" placeholder="Masukkan Jam Pinjam">
 
-        <label for="harga_sepatu">stok barang</label>
-        <input type="text" id="stok_barang" name="stok_barang" placeholder="Masukkan stok barang">
-
-        <label for="harga_sepatu">lokasi</label>
-        <input type="text" id="lokasi" name="lokasi" placeholder="Masukkan lokasi">
-
-
-
-
+        <label for="jam_selesai">Jam Selesai</label>
+        <input type="text" id="jam_selesai" name="jam_selesai" placeholder="Masukkan Jam Selesai">  
+        
         <button type="submit" name="submit">Simpan</button>
 
     </form>
