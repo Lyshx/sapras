@@ -1,19 +1,16 @@
 <?php
 include "koneksi.php";
 if (isset($_POST['submit'])){
-    $id =$_POST['id'];
-    $nis =$_POST['nis'];
-    $nama_siswa =$_POST['nama_siswa'];
-    $kelas =$_POST['kelas'];
-    $jenis_kelamin =$_POST['jenis_kelamin'];
-    $jurusan =$_POST['jurusan'];
-    $no_hp =$_POST['no_hp'];
+    $id_peminjam =$_POST['id_peminjam'];
+    $hari =$_POST['hari'];
+    $tanggal =$_POST['tanggal'];
+    $jam_pinjam =$_POST['jam_pinjam'];
+    $jam_selesai =$_POST['jam_selesai'];
 
 
-
-    $query = "INSERT INTO siswa
-                (id,nis,nama_siswa,kelas,jenis_kelamin,jurusan,no_hp) VALUES
-                ('$id','$nis','$nama_siswa','$kelas','$jenis_kelamin','$jurusan','$no_hp')";
+    $query = "INSERT INTO peminjam
+                (id_peminjam,hari,tanggal,jam_pinjam,jam_selesai) VALUES
+                ('$id_peminjam','$hari','$tanggal','$jam_pinjam','$jam_selesai')";
     mysqli_query($koneksi,$query);
     header ("location: index.php");
 }
@@ -93,31 +90,22 @@ if (isset($_POST['submit'])){
 
 <body>
     <form action="" method="POST">
-    <h1>Tambah Siswa</h1>
-        <label for="id">ID</label>
-        <input type="text" id="id" name="id" placeholder="Masukkan ID">
+    <h1>Tambah Peminjam</h1>
+        <label for="id_peminjam">ID Peminjam</label>
+        <input type="text" id="id_peminjam" name="id_peminjam" placeholder="Masukkan ID Peminjam">
 
-        <label for="nis">NIS</label>
-        <input type="text" id="nis" name="nis" placeholder="Masukkan NIS">
+        <label for="hari">Hari</label>
+        <input type="text" id="hari" name="hari" placeholder="Masukkan Hari">
 
-        <label for="nama_siswa">Nama Siswa</label>
-        <input type="text" id="nama_siswa" name="nama_siswa" placeholder="Masukkan nama siswa">
+        <label for="tanggal">Tanggal</label>
+        <input type="text" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal">
 
-        <label for="kelas">Kelas</label>
-        <input type="text" id="kelas" name="kelas" placeholder="Masukkan kelas">
+        <label for="jam_pinjam">Jam Pinjam</label>
+        <input type="text" id="jam_pinjam" name="jam_pinjam" placeholder="Masukkan Jam Pinjam">
 
-        <label for="jenis_kelamin">Jenis Kelamin</label>
-        <select id="jenis_kelamin" name="jenis_kelamin">
-            <option value="Laki-laki">Laki-laki</option>
-            <option value="Perempuan">Perempuan</option>
-        </select>
-
-        <label for="jurusan">Jurusan</label>
-        <input type="text" id="jurusan" name="jurusan" placeholder="Masukkan jurusan">
-
-        <label for="no_hp">No HP</label>
-        <input type="text" id="no_hp" name="no_hp" placeholder="Masukkan no hp">
-
+        <label for="jam_selesai">Jam Selesai</label>
+        <input type="text" id="jam_selesai" name="jam_selesai" placeholder="Masukkan Jam Selesai">  
+        
         <button type="submit" name="submit">Simpan</button>
 
     </form>
