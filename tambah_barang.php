@@ -28,8 +28,8 @@ if (isset($_POST['submit'])){
             padding: 0;
             font-family: Arial, sans-serif;
 
-            /* Background gradasi hijau ke putih */
-            background: linear-gradient(135deg, #2e7d32, #ffffff);
+            /* Background gradasi biru ke putih */
+            background: linear-gradient(135deg, #2563eb, #ffffff);
 
             min-height: 100vh;
 
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])){
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #2e7d32;
+            color: #2563eb;
         }
 
         input {
@@ -60,21 +60,21 @@ if (isset($_POST['submit'])){
             margin-bottom: 15px;
             box-sizing: border-box;
 
-            border: 1px solid #4caf50;
+            border: 1px solid #2563eb;
             border-radius: 8px;
             outline: none;
         }
 
         input:focus {
-            border-color: #2e7d32;
-            box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+            border-color: #2563eb;
+            box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
         }
 
         button {
             width: 100%;
             padding: 12px;
 
-            background-color: #2e7d32;
+            background-color: #2563eb;
             color: white;
 
             border: none;
