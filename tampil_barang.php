@@ -38,6 +38,7 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
             <td><?= $nilai['stok_barang']; ?></td>
             <td><?= $nilai['lokasi']; ?></td>
         <td>
+                <a href="edit_barang.php?id=<?= $nilai['id_barang']; ?>" class="btn btn-warning btn-sm">Edit</a>
                 <a href="hapus_barang.php?id=<?= $nilai['id_barang']; ?>" class="btn btn-danger btn-sm">Hapus</a>
         </td>
         </tr>
