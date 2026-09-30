@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
 
     // Prepared statement untuk menghapus barang berdasarkan id_barang
     $stmt = mysqli_prepare($koneksi, "DELETE FROM barang WHERE id_barang = ?");
-    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_bind_param($stmt, "s", $id);
 
     if (mysqli_stmt_execute($stmt)) {
         header("Location: tampil_barang.php");

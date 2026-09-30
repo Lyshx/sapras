@@ -29,6 +29,7 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
         <?php foreach ($data as $d => $nilai): ?>
         <tbody>
         <tr>
+    
             <td><?=  $d + 1; ?></td>
             <td><?= $nilai['id_barang']; ?></td>
             <td><?= $nilai['nama_barang']; ?></td>
@@ -36,6 +37,9 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
             <td><?= $nilai['kondisi']; ?></td>
             <td><?= $nilai['stok_barang']; ?></td>
             <td><?= $nilai['lokasi']; ?></td>
+        <td>
+                <a href="hapus_barang.php?id=<?= $nilai['id_barang']; ?>" class="btn btn-danger btn-sm">Hapus</a>
+        </td>
         </tr>
         <?php endforeach; ?>
         </tbody>
