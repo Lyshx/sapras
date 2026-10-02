@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
         <!-- Kartu Visual Inventaris -->
         <section id="inventaris">
-            <h2>Peralatan Utama (Infocus)</h2>
+            <h2>Peralatan Utama (Infocus & alat kebersihan)</h2>
             <div class="inventory-grid">
                 <div class="inventory-card">
                     <img src="Assets/proyektor.jpg" alt="Infocus Proyektor">
@@ -152,8 +152,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         <section id="peminjaman">
             <h2>Form Pengajuan Peminjaman</h2>
             <form action="index.php" method="POST" id="formPeminjaman">
-                <label for="id_barang">ID Barang</label>
-                <input type="text" id="id_barang" name="id_barang" placeholder="Masukkan ID barang" required>
+
+                <label for="id">Id Peminjam/Siswa</label>
+                <input type="text" id="id" name="id" placeholder="Masukkan ID">
+
+                <label for="nama_siswa">Nama Siswa</label>
+                <input type="text" id="nama_siswa" name="id_peminjam" placeholder="Masukkan nama siswa" required>
 
                 <label for="nama_barang">Nama Barang</label>
                 <input type="text" id="nama_barang" name="nama_barang" placeholder="Masukkan nama barang" required>
@@ -161,14 +165,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 <label for="jumlah">Jumlah</label>
                 <input type="number" id="jumlah" name="jumlah" placeholder="Masukkan jumlah" required>
 
-                <label for="kondisi">Kondisi</label>
-                <input type="text" id="kondisi" name="kondisi" placeholder="Masukkan kondisi" required>
+                <label for="hari">Hari</label>
+                <input type="text" id="hari" name="hari" placeholder="Masukkan hari" required>
 
-                <label for="stok_barang">Stok Barang</label>
-                <input type="number" id="stok_barang" name="stok_barang" placeholder="Masukkan stok barang" required>
+                <label for="tanggal">Tanggal</label>
+                <input type="text" id="tanggal" name="tanggal" placeholder="Masukkan tanggal" required>
 
-                <label for="lokasi">Lokasi</label>
-                <input type="text" id="lokasi" name="lokasi" placeholder="Masukkan lokasi" required>
+                <label for="jam_pinjam">Jam Pinjam</label>
+                <input type="text" id="jam_pinjam" name="jam_pinjam" placeholder="Masukkan jam pinjam" required>
+
+                <label for="jam_selesai">Jam Selesai</label>
+                <input type="text" id="jam_selesai" name="jam_selesai" placeholder="Masukkan jam selesai" required>
 
                 <button type="submit" name="submit">Simpan</button>
             </form>
