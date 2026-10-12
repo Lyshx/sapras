@@ -35,10 +35,9 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
             <td><?= $nilai['jam_pinjam']; ?></td>
             <td><?= $nilai['jam_selesai']; ?></td>
         <td>
-                <a href="edit_peminjaman.php?id_peminjaman=<?= $nilai['id_peminjaman']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                <a href="hapus_peminjaman.php?id=<?= $nilai['id_peminjaman']; ?>" class="btn btn-danger btn-sm">Hapus</a>
-
-            </td>
+                <a href="edit_peminjaman.php?id_peminjam=<?= $nilai['id_peminjam']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                <a href="hapus_peminjaman.php?id=<?= $nilai['id_peminjam']; ?>" class="btn btn-danger btn-sm">Hapus</a>
+        </td>
         </tr>
         <?php endforeach; ?>
         </tbody>

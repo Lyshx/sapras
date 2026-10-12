@@ -39,7 +39,7 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
         <td>
                 <a href="edit_siswa.php?nis=<?= $nilai['nis']; ?>" class="btn btn-warning btn-sm">Edit</a>
                 <a href="hapus_siswa.php?nis=<?= $nilai['nis']; ?>" class="btn btn-danger btn-sm">Hapus</a>
-            </td>
+        </td>
         </tr>
         <?php endforeach; ?>
         </tbody>
