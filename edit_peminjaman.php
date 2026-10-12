@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     header("Location:tampil_peminjam.php");
     exit;
 }
-    $query_lama = "SELECT * FROM peminjam WHERE id_peminjam = '$nip'";
+    $query_lama = "SELECT * FROM peminjaman WHERE id_peminjam = '$nip'";
     $hasil_lama = mysqli_query($koneksi, $query_lama);
     $lama = mysqli_fetch_assoc($hasil_lama);
    // var_dump($lama);
