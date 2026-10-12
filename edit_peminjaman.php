@@ -1,20 +1,20 @@
 <?php
 include "koneksi.php";
-$nip =$_GET['id_peminjaman'] ?? $_POST['id_peminjaman'] ?? '';
+$nip =$_GET['id_peminjam'] ?? $_POST['id_peminjam'] ?? '';
 // var_dump($nip);
 if (isset($_POST['submit'])) {
-    $id_peminjaman = $_POST['id_peminjaman'];
+    $id_peminjaman = $_POST['id_peminjam'];
     $hari = $_POST['hari'];
     $tanggal = $_POST['tanggal'];
     $jam_pinjam = $_POST['jam_pinjam'];
     $jam_selesai = $_POST['jam_selesai'];
 
-    $query = "UPDATE peminjaman SET id_peminjaman = '$id_peminjaman', hari = '$hari', tanggal = '$tanggal', jam_pinjam = '$jam_pinjam', jam_selesai = '$jam_selesai' where id_peminjaman ='$id_peminjaman'";
+    $query = "UPDATE peminjaman SET hari='$hari', tanggal='$tanggal', jam_pinjam='$jam_pinjam', jam_selesai='$jam_selesai' WHERE id_peminjam='$nip'";
     mysqli_query($koneksi, $query);
-    header("Location:tampil_peminjaman.php");
+    header("Location:tampil_peminjam.php");
     exit;
 }
-    $query_lama = "SELECT * FROM peminjaman WHERE id_peminjaman ='$nip'";
+    $query_lama = "SELECT * FROM peminjam WHERE id_peminjam = '$nip'";
     $hasil_lama = mysqli_query($koneksi, $query_lama);
     $lama = mysqli_fetch_assoc($hasil_lama);
    // var_dump($lama);
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Data peminjaman</title>
+    <title>Update Data peminjam</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
         </div>
     <form action="" method="POST">
     <!-- Menggunakan isset/null coalescing agar tidak mencetak warning di value -->
-    <input type="text" name="id_peminjaman" value="<?php echo $lama['id_peminjaman'] ?? ''; ?>" readonly placeholder="ID Peminjaman">
+    <input type="text" name="id_peminjam" value="<?php echo $lama['id_peminjam'] ?? ''; ?>" readonly placeholder="ID Peminjam">
     <input type="text" name="hari" value="<?php echo $lama['hari'] ?? ''; ?>" placeholder="Hari">
     <input type="date" name="tanggal" value="<?php echo $lama['tanggal'] ?? ''; ?>" placeholder="Tanggal">
     <input type="time" name="jam_pinjam" value="<?php echo $lama['jam_pinjam'] ?? ''; ?>" placeholder="Jam Pinjam">

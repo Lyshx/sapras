@@ -149,15 +149,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         </section>
 
         <!-- Form Peminjaman -->
-        <section id="peminjaman">
+        <section id="peminjam">
             <h2>Form Pengajuan Peminjaman</h2>
             <form action="index.php" method="POST" id="formPeminjaman">
 
-                <label for="id">Id Peminjam/Siswa</label>
-                <input type="text" id="id" name="id" placeholder="Masukkan ID">
-
-                <label for="nama_siswa">Nama Siswa</label>
-                <input type="text" id="nama_siswa" name="id_peminjam" placeholder="Masukkan nama siswa" required>
+                <label for="id">Id Barang</label>
+                <input type="text" id="id_barang" name="id_barang" placeholder="Masukkan ID">
 
                 <label for="nama_barang">Nama Barang</label>
                 <input type="text" id="nama_barang" name="nama_barang" placeholder="Masukkan nama barang" required>
@@ -165,17 +162,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 <label for="jumlah">Jumlah</label>
                 <input type="number" id="jumlah" name="jumlah" placeholder="Masukkan jumlah" required>
 
-                <label for="hari">Hari</label>
-                <input type="text" id="hari" name="hari" placeholder="Masukkan hari" required>
+                <label for="kondisi">Kondisi</label>
+                <input type="number" id="kondisi" name="kondisi" placeholder="Masukkan kondisi" required>
 
-                <label for="tanggal">Tanggal</label>
-                <input type="text" id="tanggal" name="tanggal" placeholder="Masukkan tanggal" required>
+                <label for="stok_barang">Stok Barang</label>
+                <input type="text" id="stok_barang" name="stok_barang" placeholder="Masukkan stok barang" required>
 
-                <label for="jam_pinjam">Jam Pinjam</label>
-                <input type="text" id="jam_pinjam" name="jam_pinjam" placeholder="Masukkan jam pinjam" required>
+                <label for="lokasi">lokasi</label>
+                <input type="text" id="lokasi" name="lokasi" placeholder="Masukkan lokasi" required>
 
-                <label for="jam_selesai">Jam Selesai</label>
-                <input type="text" id="jam_selesai" name="jam_selesai" placeholder="Masukkan jam selesai" required>
+                <label for="status">status</label>
+                <input type="text" id="status" name="status" placeholder="Masukkan status" required>
 
                 <button type="submit" name="submit">Simpan</button>
             </form>
@@ -190,13 +187,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>ID Barang</th>
-                        <th>Nama Barang</th>
-                        <th>Jumlah</th>
-                        <th>Kondisi</th>
-                        <th>Stok Barang</th>
-                        <th>Lokasi</th>
-                        <th>Status</th>
+                        <th>Id Barang</th>
+                        <th>Nama barang</th>
+                        <th>jumlah</th>
+                        <th>kondisi</th>
+                        <th>stok barang</th>
+                        <th>lokasi</th>
+                        <th>status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -214,7 +211,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                         <td><?= htmlspecialchars($row['kondisi'] ?? '-'); ?></td>
                         <td><?= htmlspecialchars($row['stok_barang'] ?? '-'); ?></td>
                         <td><?= htmlspecialchars($row['lokasi'] ?? '-'); ?></td>
-                        <td><span class="badge <?= $badgeClass; ?>"><?= htmlspecialchars($status); ?></span></td>
+                        <td><?= htmlspecialchars($row['status'] ?? '-'); ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -222,7 +219,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         </section>
 
     </div>
-
     <footer>
         <p>&copy; 2026 SMK Negeri 1 Maja — Tim Sarana dan Prasarana</p>
     </footer>
