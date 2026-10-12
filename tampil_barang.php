@@ -6,45 +6,48 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabel Barang</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <table class="table" border="1">
-        <thead class="table-dark">
-        <tr>
-            <th>Id</th>
-            <th>Id_barang</th>
-            <th>Nama_Barang</th>
-            <th>Jumlah</th>
-            <th>Kondisi</th>
-            <th>Stok_Barang</th>
-            <th>Lokasi</th>
-        </tr>
-        <?php foreach ($data as $d => $nilai): ?>
-        <tbody>
-        <tr>
-    
-            <td><?=  $d + 1; ?></td>
-            <td><?= $nilai['id_barang']; ?></td>
-            <td><?= $nilai['nama_barang']; ?></td>
-            <td><?= $nilai['jumlah']; ?></td>
-            <td><?= $nilai['kondisi']; ?></td>
-            <td><?= $nilai['stok_barang']; ?></td>
-            <td><?= $nilai['lokasi']; ?></td>
-        <td>
-                <a href="edit_barang.php?id=<?= $nilai['id_barang']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                <a href="hapus_barang.php?id=<?= $nilai['id_barang']; ?>" class="btn btn-danger btn-sm">Hapus</a>
-        </td>
-        </tr>
-        <?php endforeach; ?>
-        </tbody>
-        </thead>
-    </table>
+    <div class="container mt-4">
+        <h2 class="mb-3">Daftar Barang</h2>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>No</th>
+                    <th>ID Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Jumlah</th>
+                    <th>Kondisi</th>
+                    <th>Stok Barang</th>
+                    <th>Lokasi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($data as $d => $nilai): ?>
+                <tr>
+                    <td><?= $d + 1; ?></td>
+                    <td><?= $nilai['id_barang']; ?></td>
+                    <td><?= $nilai['nama_barang']; ?></td>
+                    <td><?= $nilai['jumlah']; ?></td>
+                    <td><?= $nilai['kondisi']; ?></td>
+                    <td><?= $nilai['stok_barang']; ?></td>
+                    <td><?= $nilai['lokasi']; ?></td>
+                    <td>
+                        <a href="edit_barang.php?id=<?= $nilai['id_barang']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="hapus_barang.php?id=<?= $nilai['id_barang']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
