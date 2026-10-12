@@ -9,10 +9,19 @@ if (isset($_GET['id'])) {
     mysqli_stmt_bind_param($stmt, "i", $id);
 
     if (mysqli_stmt_execute($stmt)) {
-        header("Location: tampil_peminjam.php");
+        // Pop-up sukses dan kembali ke tampil_peminjam.php
+        echo "<script>
+                alert('Data peminjam berhasil dihapus!');
+                window.location.href = 'tampil_peminjam.php';
+              </script>";
         exit;
     } else {
-        echo "Gagal menghapus data peminjam: " . mysqli_error($koneksi);
+        // Pop-up jika gagal[cite: 5]
+        $error = mysqli_error($koneksi);
+        echo "<script>
+                alert('Gagal menghapus data peminjam: $error');
+                window.location.href = 'tampil_peminjam.php';
+              </script>";
     }
     mysqli_stmt_close($stmt);
 } else {
