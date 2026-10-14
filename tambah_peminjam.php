@@ -8,11 +8,11 @@ if (isset($_POST['submit'])){
     $jam_selesai =$_POST['jam_selesai'];
 
 
-    $query = "INSERT INTO peminjam
+    $query = "INSERT INTO peminjaman
                 (id_peminjam,hari,tanggal,jam_pinjam,jam_selesai) VALUES
                 ('$id_peminjam','$hari','$tanggal','$jam_pinjam','$jam_selesai')";
     mysqli_query($koneksi,$query);
-    header ("location: index.php");
+    header ("location: tampil_peminjam.php");
 }
 ?>
 

@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
 
     // Prepared statement untuk menghapus transaksi peminjaman berdasarkan id_peminjaman
     $stmt = mysqli_prepare($koneksi, "DELETE FROM peminjaman WHERE id_peminjam = ?");
-    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_bind_param($stmt, "s", $id);
 
     if (mysqli_stmt_execute($stmt)) {
         // Pop-up sukses dan kembali ke tampil_peminjam.php
