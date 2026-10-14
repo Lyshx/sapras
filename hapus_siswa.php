@@ -1,18 +1,26 @@
 <?php
 include "koneksi.php";
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_GET['nis'])) {
+    $nis = $_GET['nis'];
 
-    // Prepared statement untuk menghapus siswa berdasarkan id_siswa
-    $stmt = mysqli_prepare($koneksi, "DELETE FROM siswa WHERE id_siswa = ?");
-    mysqli_stmt_bind_param($stmt, "i", $id);
+    $stmt = mysqli_prepare($koneksi, "DELETE FROM siswa WHERE nis = ?");
+    mysqli_stmt_bind_param($stmt, "s", $nis);
 
     if (mysqli_stmt_execute($stmt)) {
-        header("Location: tampil_siswa.php");
+        // Pop-up sukses dan kembali ke tampil_siswa.php
+        echo "<script>
+                alert('Data siswa berhasil dihapus!');
+                window.location.href = 'tampil_siswa.php';
+              </script>";
         exit;
     } else {
-        echo "Gagal menghapus data siswa: " . mysqli_error($koneksi);
+        // Pop-up jika gagal
+        $error = mysqli_error($koneksi);
+        echo "<script>
+                alert('Gagal menghapus data siswa: $error');
+                window.location.href = 'tampil_siswa.php';
+              </script>";
     }
     mysqli_stmt_close($stmt);
 } else {
