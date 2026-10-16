@@ -1,12 +1,10 @@
 <?php
 include "koneksi.php";
-<<<<<<< HEAD
 $nis = $_GET['nis'];
 $query = "DELETE FROM siswa WHERE nis = '$nis'";
 mysqli_query($koneksi, $query);
 header("Location: tampil_siswa.php");
 exit;
-=======
 
 if (isset($_GET['nis'])) {
     $nis = $_GET['nis'];
@@ -31,8 +29,7 @@ if (isset($_GET['nis'])) {
     }
     mysqli_stmt_close($stmt);
 } else {
-    header("Location: tampil_siswa.php");
+    header("Location: index.php");
     exit;
 }
->>>>>>> 525fbfd7d9ee0dea05e749ec28f837a97960d73b
 ?>

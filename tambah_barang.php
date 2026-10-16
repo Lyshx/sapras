@@ -13,7 +13,7 @@ if (isset($_POST['submit'])){
                 (id_barang,nama_barang,jumlah,kondisi,stok_barang,lokasi) VALUES
                 ('$id_barang','$nama_barang','$jumlah','$kondisi','$stok_barang','$lokasi')";
     mysqli_query($koneksi,$query);
-    header ("location: index.php");
+    header ("location: tampil_barang.php");
 }
 ?>
 
@@ -21,18 +21,14 @@ if (isset($_POST['submit'])){
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Barang di sapras</title>
+    <title>Tambah Barang</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-
-            /* Background gradasi biru ke putih */
             background: linear-gradient(135deg, #2563eb, #ffffff);
-
             min-height: 100vh;
-
             display: flex;
             justify-content: center;
             align-items: center;
@@ -41,10 +37,16 @@ if (isset($_POST['submit'])){
         form {
             background-color: rgba(255, 255, 255, 0.9);
             padding: 30px;
-            width: 300px;
+            width: 320px;
             border-radius: 15px;
-
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 20px;
         }
 
         label {
@@ -52,35 +54,35 @@ if (isset($_POST['submit'])){
             margin-bottom: 5px;
             font-weight: bold;
             color: #2563eb;
+            font-size: 14px;
         }
 
-        input {
+        input, select {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             margin-bottom: 15px;
             box-sizing: border-box;
-
             border: 1px solid #2563eb;
             border-radius: 8px;
             outline: none;
+            background-color: #fff;
         }
 
-        input:focus {
-            border-color: #2563eb;
+        input:focus, select:focus {
+            border-color: #1b5e20;
             box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
         }
 
         button {
             width: 100%;
             padding: 12px;
-
             background-color: #2563eb;
             color: white;
-
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: bold;
         }
 
         button:hover {

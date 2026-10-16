@@ -105,7 +105,7 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
                 <h3 class="fw-bold text-dark m-0">Daftar Peminjaman</h3>
                 <p class="text-muted small m-0">Kelola riwayat dan jadwal peminjaman barang</p>
             </div>
-            <a href="tambah_peminjam.php" class="btn btn-primary fw-medium px-3 py-2">
+            <a href="tambah_peminjaman.php" class="btn btn-primary fw-medium px-3 py-2">
                 <i class="bi bi-plus-lg me-1"></i> Tambah Peminjaman
             </a>
         </div>
