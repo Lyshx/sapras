@@ -32,4 +32,3 @@ if (isset($_GET['nis'])) {
     header("Location: index.php");
     exit;
 }
-?>
