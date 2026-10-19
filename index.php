@@ -225,6 +225,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     <script src="script.js"></script>
 </body>
+<<<<<<< HEAD
 </html>
 <?php
 include 'koneksi.php';
@@ -453,4 +454,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     <script src="script.js"></script>
 </body>
+=======
+>>>>>>> 27400e92836ff287471e0ceb11ee009666a02423
 </html>
