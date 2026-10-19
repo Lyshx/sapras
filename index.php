@@ -163,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 <input type="number" id="jumlah" name="jumlah" placeholder="Masukkan jumlah" required>
 
                 <label for="kondisi">Kondisi</label>
-                <input type="number" id="kondisi" name="kondisi" placeholder="Masukkan kondisi" required>
+                <input type="text" id="kondisi" name="kondisi" placeholder="Masukkan kondisi" required>
 
                 <label for="stok_barang">Stok Barang</label>
                 <input type="text" id="stok_barang" name="stok_barang" placeholder="Masukkan stok barang" required>
