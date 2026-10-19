@@ -5,9 +5,9 @@ if (isset($_POST['submit'])){
     $id_barang =$_POST['id_barang'];
     $nama_barang =$_POST['nama_barang'];
     $jumlah =$_POST['jumlah'];
-     $kondisi =$_POST['kondisi'];
-      $stok_barang =$_POST['stok_barang'];
-      $lokasi =$_POST['lokasi'];
+    $kondisi =$_POST['kondisi'];
+    $stok_barang =$_POST['stok_barang'];
+    $lokasi =$_POST['lokasi'];
 
     $query = "INSERT INTO barang
                 (id_barang,nama_barang,jumlah,kondisi,stok_barang,lokasi) VALUES
