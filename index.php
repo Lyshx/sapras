@@ -225,9 +225,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     <script src="script.js"></script>
 </body>
-</html>php
+</html>
+<?php
 include 'koneksi.php';
-session_start();
+session_start()
 
 if (!isset($_SESSION['barang'])) {
     $_SESSION['barang'] = [
