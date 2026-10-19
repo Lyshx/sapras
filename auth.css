@@ -1,0 +1,22 @@
+:root{--bg:#f4f8ff;--card:#fff;--tx:#0f1f3d;--mu:#5b6b8a;--pr:#1d5fe0;--pr2:#4aa3ff;--bd:#dbe6fb;--rd:#d93a3a;--sh:0 10px 30px rgba(29,95,224,.12)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Segoe UI",system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+.blob{position:fixed;border-radius:50%;filter:blur(70px);opacity:.45;z-index:0;animation:fl 14s ease-in-out infinite alternate;pointer-events:none}
+.b1{width:380px;height:380px;background:var(--pr2);top:-120px;left:-100px}.b2{width:320px;height:320px;background:var(--pr);bottom:-120px;right:-80px;animation-delay:-6s}
+@keyframes fl{to{transform:translate(60px,40px) scale(1.15)}}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.auth{position:relative;z-index:1;min-height:100vh;display:grid;place-items:center;padding:20px}
+.card{width:100%;max-width:420px;background:var(--card);border:1px solid var(--bd);border-radius:20px;box-shadow:var(--sh);padding:26px;animation:up .5s both}
+.logo{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.lg{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--pr),var(--pr2));display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px}
+.logo h1{margin:0;font-size:19px}.logo small{color:var(--mu)}
+.seg{display:flex;background:var(--bg);border-radius:12px;padding:4px;margin:10px 0}
+.seg a,.seg label{flex:1;text-align:center;border-radius:9px;font-weight:600;color:var(--mu);cursor:pointer;text-decoration:none;margin:0;font-size:14px}
+.seg a{padding:9px;transition:.25s}.seg a.on,.seg input:checked+span{background:var(--pr);color:#fff}
+.seg label span{display:block;padding:9px;border-radius:9px;transition:.25s}.seg input{display:none}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px}
+input:not([type=radio]){width:100%;padding:11px 13px;border:1.5px solid var(--bd);border-radius:11px;background:var(--bg);color:var(--tx);font:inherit;transition:.2s}
+input:focus{outline:0;border-color:var(--pr);box-shadow:0 0 0 4px rgba(29,95,224,.15)}
+.b{width:100%;margin-top:18px;border:0;border-radius:11px;padding:12px;font:inherit;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--pr),var(--pr2));color:#fff;box-shadow:0 6px 16px rgba(29,95,224,.3);transition:.2s}
+.b:hover{transform:translateY(-2px)}
+.alert{margin-top:12px;padding:10px 13px;border-radius:10px;font-size:13px;background:rgba(217,58,58,.1);color:var(--rd)}

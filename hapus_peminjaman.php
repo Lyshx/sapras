@@ -1,4 +1,6 @@
 <?php
+require_once 'auth.php';
+wajib_admin();
 include "koneksi.php";
 
 if (isset($_GET['id'])) {

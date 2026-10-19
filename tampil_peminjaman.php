@@ -1,4 +1,6 @@
 <?php
+require_once 'auth.php';
+wajib_admin();
 include "koneksi.php";
 $query = "SELECT * FROM peminjaman";
 $hasil = mysqli_query($koneksi, $query);
@@ -68,35 +70,7 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     </style>
 </head>
 <body>
-    <table class="table" border="1">
-        <thead class="table-dark">
-        <tr>
-            <th>Id</th>
-            <th>id_peminjam</th>
-            <th>hari</th>
-            <th>tanggal</th>
-            <th>jam_pinjam</th>
-            <th>jam_selesai</th>
-        </tr>
-        <?php foreach ($data as $d => $nilai): ?>
-        <tbody>
-        <tr>
-            <td><?=  $d + 1; ?></td>
-            <td><?= $nilai['id_peminjam']; ?></td>
-            <td><?= $nilai['hari']; ?></td>
-            <td><?= $nilai['tanggal']; ?></td>
-            <td><?= $nilai['jam_pinjam']; ?></td>
-            <td><?= $nilai['jam_selesai']; ?></td>
-        <td>
-                <a href="edit_peminjaman.php?id_peminjam=<?= $nilai['id_peminjam']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                <a href="hapus_peminjaman.php?id=<?= $nilai['id_peminjam']; ?>" class="btn btn-danger btn-sm">Hapus</a>
-        </td>
-        </tr>
-        <?php endforeach; ?>
-        </tbody>
-        </thead>
-    </table>
-
+<?php include 'admin_nav.php'; ?>
 <div class="container py-5">
     <div class="card main-card p-4">
         <!-- Header & Tambah Data -->

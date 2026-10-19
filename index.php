@@ -1,6 +1,7 @@
 <?php
+require_once 'auth.php';
+wajib_login();
 include 'koneksi.php';
-session_start();
 
 if (!isset($_SESSION['barang'])) {
     $_SESSION['barang'] = [
@@ -72,6 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             <a href="#inventaris">Daftar Alat</a>
             <a href="#peminjaman">Form Peminjaman</a>
             <a href="#daftar-peminjaman">Data Peminjaman</a>
+            <?php if (($_SESSION['role'] ?? '') === 'admin'): ?><a href="admin.php">Dashboard Admin</a><?php endif; ?>
+            <a href="logout.php">Keluar (<?= e($_SESSION['nama']) ?>)</a>
         </div>
     </nav>
 
@@ -149,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         </section>
 
         <!-- Form Peminjaman -->
-        <section id="peminjam">
+        <section id="peminjaman">
             <h2>Form Pengajuan Peminjaman</h2>
             <form action="index.php" method="POST" id="formPeminjaman">
 

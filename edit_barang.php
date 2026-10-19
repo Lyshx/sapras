@@ -1,24 +1,27 @@
 <?php
+require_once 'auth.php';
+wajib_admin();
 include "koneksi.php";
-$nip =$_GET['id_barang'] ?? $_POST['id_barang'] ?? '';
+$nip = $_GET['id'] ?? $_GET['id_barang'] ?? $_POST['id_barang'] ?? '';
 
 if (isset($_POST['submit'])) {
     $id_barang = $_POST['id_barang'];
     $nama_barang = $_POST['nama_barang'];
-    $jumlah = $_POST['jenis_kelamin'];
-    $kondisi = $_POST['jabatan'];
-    $stok_barang = $_POST['stok_barang'];
+    $jumlah = $_POST['jumlah'];
+    $kondisi = $_POST['kondisi'];
+    $stok_barang = $_POST['stok'];
     $lokasi = $_POST['lokasi'];
 
-    $query = "UPDATE barang SET id_barang = '$id_barang', nama_barang = '$nama_barang', jumlah = '$jumlah', kondisi = '$kondisi', stok_barang = '$stok_barang', lokasi = '$lokasi' where id_barang ='$id_barang'";
-    mysqli_query($koneksi, $query);
-    header("Location:tampil_barang.php");
+    $stmt = mysqli_prepare($koneksi, "UPDATE barang SET nama_barang=?, jumlah=?, kondisi=?, stok_barang=?, lokasi=? WHERE id_barang=?");
+    mysqli_stmt_bind_param($stmt, "ssssss", $nama_barang, $jumlah, $kondisi, $stok_barang, $lokasi, $id_barang);
+    mysqli_stmt_execute($stmt);
+    header("Location: tampil_barang.php");
     exit;
 }
-    $query_lama = "SELECT * FROM barang WHERE id_barang ='$nip'";
-    $hasil_lama = mysqli_query($koneksi, $query_lama);
-    $lama = mysqli_fetch_assoc($hasil_lama);
-   // var_dump($lama);
+$stmt = mysqli_prepare($koneksi, "SELECT * FROM barang WHERE id_barang = ?");
+mysqli_stmt_bind_param($stmt, "s", $nip);
+mysqli_stmt_execute($stmt);
+$lama = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 ?>  
  <!DOCTYPE html>
 <html lang="en">
@@ -198,38 +201,38 @@ if (isset($_POST['submit'])) {
     <div class="update-card">
         <div class="update-header">
             <h2><i class="fa-solid fa-box-open"></i> Update Data Barang</h2>
-            <p>Mohon lengkapi formulir di bawah ini untuk mengupdate data barang[cite: 1].</p>
+            <p>Mohon lengkapi formulir di bawah ini untuk mengupdate data barang.</p>
         </div>
 
         <form action="" method="POST" class="update-form">
             <div class="form-group">
                 <label><i class="fa-solid fa-id-card"></i> ID Barang</label>
-                <input type="text" name="id_barang" class="input-readonly" value="<?php echo $lama['id_barang'] ?? ''; ?>" readonly placeholder="ID Barang"[cite: 1]>
+                <input type="text" name="id_barang" class="input-readonly" value="<?php echo $lama['id_barang'] ?? ''; ?>" readonly placeholder="ID Barang">
             </div>
 
             <div class="form-group">
                 <label><i class="fa-solid fa-calendar-day"></i> Nama Barang</label>
-                <input type="text" name="nama_barang" value="<?php echo $lama['nama_barang'] ?? ''; ?>" placeholder="Masukkan Nama Barang"[cite: 1]>
+                <input type="text" name="nama_barang" value="<?php echo $lama['nama_barang'] ?? ''; ?>" placeholder="Masukkan Nama Barang">
             </div>
 
             <div class="form-group">
                 <label><i class="fa-solid fa-calendar-alt"></i> Jumlah</label>
-                <input type="number" name="jumlah" value="<?php echo $lama['jumlah'] ?? ''; ?>" placeholder="Masukkan Jumlah"[cite: 1]>
+                <input type="number" name="jumlah" value="<?php echo $lama['jumlah'] ?? ''; ?>" placeholder="Masukkan Jumlah">
             </div>
 
             <div class="form-group">
                 <label><i class="fa-solid fa-clock"></i> Kondisi</label>
-                <input type="text" name="kondisi" value="<?php echo $lama['kondisi'] ?? ''; ?>" placeholder="Masukkan Kondisi"[cite: 1]>
+                <input type="text" name="kondisi" value="<?php echo $lama['kondisi'] ?? ''; ?>" placeholder="Masukkan Kondisi">
             </div>
 
             <div class="form-group">
                 <label><i class="fa-solid fa-clock-rotate-left"></i> Stok</label>
-                <input type="number" name="stok" value="<?php echo $lama['stok'] ?? ''; ?>" placeholder="Masukkan Stok"[cite: 1]>
+                <input type="number" name="stok" value="<?php echo $lama['stok_barang'] ?? ''; ?>" placeholder="Masukkan Stok">
             </div>
 
             <div class="form-group">
                 <label><i class="fa-solid fa-clock-rotate-left"></i> Lokasi</label>
-                <input type="text" name="lokasi" value="<?php echo $lama['lokasi'] ?? ''; ?>" placeholder="Masukkan Lokasi"[cite: 1]>
+                <input type="text" name="lokasi" value="<?php echo $lama['lokasi'] ?? ''; ?>" placeholder="Masukkan Lokasi">
             </div>
 
 

@@ -1,4 +1,6 @@
 <?php
+require_once 'auth.php';
+wajib_admin();
 include "koneksi.php";
 
 if (isset($_GET['id'])) {
@@ -16,7 +18,7 @@ if (isset($_GET['id'])) {
               </script>";
         exit;
     } else {
-        // Pop-up pemberitahuan jika terjadi kegagalan[cite: 2]
+        // Pop-up pemberitahuan jika terjadi kegagalan
         $error = mysqli_error($koneksi);
         echo "<script>
                 alert('Gagal menghapus data barang: $error');

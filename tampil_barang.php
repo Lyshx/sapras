@@ -1,4 +1,6 @@
 <?php
+require_once 'auth.php';
+wajib_admin();
 include "koneksi.php";
 $query = "SELECT * FROM barang";
 $hasil = mysqli_query($koneksi, $query);
@@ -75,6 +77,7 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     </style>
 </head>
 <body>
+<?php include 'admin_nav.php'; ?>
 
 <div class="container py-5">
     <div class="card main-card p-4">

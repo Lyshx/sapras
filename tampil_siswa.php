@@ -1,4 +1,6 @@
 <?php
+require_once 'auth.php';
+wajib_admin();
 include "koneksi.php";
 $query = "SELECT * FROM siswa";
 $hasil = mysqli_query($koneksi, $query);
@@ -68,37 +70,7 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
     </style>
 </head>
 <body>
-    <table class="table" border="1">
-        <thead class="table-dark">
-        <tr>
-            <th>Id</th>
-            <th>nis</th>
-            <th>nama_siswa</th>
-            <th>kelas</th>
-            <th>jenis_kelamin</th>
-            <th>jurusan</th>
-            <th>no_hp</th>
-        </tr>
-        <?php foreach ($data as $d => $nilai): ?>
-        <tbody>
-        <tr>
-            <td><?=  $d + 1; ?></td>
-            <td><?= $nilai['nis']; ?></td>
-            <td><?= $nilai['nama_siswa']; ?></td>
-            <td><?= $nilai['kelas']; ?></td>
-            <td><?= $nilai['jenis_kelamin']; ?></td>
-            <td><?= $nilai['jurusan']; ?></td>
-            <td><?= $nilai['no_hp']; ?></td>
-        <td>
-                <a href="edit_siswa.php?nis=<?= $nilai['nis']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                <a href="hapus_siswa.php?nis=<?= $nilai['nis']; ?>" class="btn btn-danger btn-sm">Hapus</a>
-        </td>
-        </tr>
-        <?php endforeach; ?>
-        </tbody>
-        </thead>
-    </table>
-
+<?php include 'admin_nav.php'; ?>
 <div class="container py-5">
     <div class="card main-card p-4">
         <!-- Header & Tambah Data -->

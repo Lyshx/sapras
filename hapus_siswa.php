@@ -1,4 +1,6 @@
 <?php
+require_once 'auth.php';
+wajib_admin();
 include "koneksi.php";
 $nis = $_GET['nis'];
 $query = "DELETE FROM siswa WHERE nis = '$nis'";

@@ -1,4 +1,6 @@
 <?php
+require_once 'auth.php';
+wajib_admin();
 include "koneksi.php";
 $nip = $_GET['id_peminjam'] ?? $_POST['id_peminjam'] ?? '';
 
@@ -11,7 +13,7 @@ if (isset($_POST['submit'])) {
 
     $query = "UPDATE peminjaman SET hari='$hari', tanggal='$tanggal', jam_pinjam='$jam_pinjam', jam_selesai='$jam_selesai' WHERE id_peminjam='$nip'";
     mysqli_query($koneksi, $query);
-    header("Location:tampil_peminjam.php");
+    header("Location:tampil_peminjaman.php");
     exit;
 }
 
@@ -197,40 +199,40 @@ $lama = mysqli_fetch_assoc($hasil_lama);
     <div class="update-card">
         <div class="update-header">
             <h2><i class="fa-solid fa-user-edit"></i> Update Data Peminjaman</h2>
-            <p>Mohon lengkapi formulir di bawah ini untuk mengupdate data peminjaman[cite: 1].</p>
+            <p>Mohon lengkapi formulir di bawah ini untuk mengupdate data peminjaman.</p>
         </div>
 
         <form action="" method="POST" class="update-form">
             <div class="form-group">
                 <label><i class="fa-solid id-card"></i> ID Peminjam</label>
-                <input type="text" name="id_peminjam" class="input-readonly" value="<?php echo $lama['id_peminjam'] ?? ''; ?>" readonly placeholder="ID Peminjam"[cite: 1]>
+                <input type="text" name="id_peminjam" class="input-readonly" value="<?php echo $lama['id_peminjam'] ?? ''; ?>" readonly placeholder="ID Peminjam">
             </div>
 
             <div class="form-group">
                 <label><i class="fa-solid fa-calendar-day"></i> Hari</label>
-                <input type="text" name="hari" value="<?php echo $lama['hari'] ?? ''; ?>" placeholder="Masukkan Hari"[cite: 1]>
+                <input type="text" name="hari" value="<?php echo $lama['hari'] ?? ''; ?>" placeholder="Masukkan Hari">
             </div>
 
             <div class="form-group">
                 <label><i class="fa-solid fa-calendar-alt"></i> Tanggal</label>
-                <input type="date" name="tanggal" value="<?php echo $lama['tanggal'] ?? ''; ?>"[cite: 1]>
+                <input type="date" name="tanggal" value="<?php echo $lama['tanggal'] ?? ''; ?>">
             </div>
 
             <div class="form-group">
                 <label><i class="fa-solid fa-clock"></i> Jam Pinjam</label>
-                <input type="time" name="jam_pinjam" value="<?php echo $lama['jam_pinjam'] ?? ''; ?>"[cite: 1]>
+                <input type="time" name="jam_pinjam" value="<?php echo $lama['jam_pinjam'] ?? ''; ?>">
             </div>
 
             <div class="form-group">
                 <label><i class="fa-solid fa-clock-rotate-left"></i> Jam Selesai</label>
-                <input type="time" name="jam_selesai" value="<?php echo $lama['jam_selesai'] ?? ''; ?>"[cite: 1]>
+                <input type="time" name="jam_selesai" value="<?php echo $lama['jam_selesai'] ?? ''; ?>">
             </div>
 
             <div class="button-group">
                 <button type="submit" name="submit" class="btn btn-primary btn-zoom">
                     <i class="fa-solid fa-save"></i> Update
                 </button>
-                <a href="tampil_peminjam.php" class="btn btn-secondary btn-zoom">
+                <a href="tampil_peminjaman.php" class="btn btn-secondary btn-zoom">
                     <i class="fa-solid fa-arrow-left"></i> Kembali
                 </a>
             </div>

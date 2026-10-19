@@ -1,4 +1,6 @@
 <?php
+require_once 'auth.php';
+wajib_admin();
 include "koneksi.php";
 if (isset($_POST['submit'])){
     $id_peminjam =$_POST['id_peminjam'];
@@ -13,6 +15,7 @@ if (isset($_POST['submit'])){
                 ('$id_peminjam','$hari','$tanggal','$jam_pinjam','$jam_selesai')";
     mysqli_query($koneksi,$query);
     header ("location: tampil_peminjaman.php");
+    exit;
 }
 ?>
 

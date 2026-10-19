@@ -1,7 +1,8 @@
 <?php
+require_once 'auth.php';
+wajib_admin();
 include "koneksi.php";
 if (isset($_POST['submit'])){
-    $id =$_POST['id'];
     $id_barang =$_POST['id_barang'];
     $nama_barang =$_POST['nama_barang'];
     $jumlah =$_POST['jumlah'];
@@ -14,6 +15,7 @@ if (isset($_POST['submit'])){
                 ('$id_barang','$nama_barang','$jumlah','$kondisi','$stok_barang','$lokasi')";
     mysqli_query($koneksi,$query);
     header ("location: tampil_barang.php");
+    exit;
 }
 ?>
 
