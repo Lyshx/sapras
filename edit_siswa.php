@@ -191,8 +191,9 @@ if (isset($_POST['submit'])) {
             }
         }
     </style>
+    <link rel="stylesheet" href="responsive.css">
 </head>
-<body>
+<body class="edit-form-page">
     <div class="update-card">
         <div class="update-header">
             <h2><i class="fa-solid fa-user-edit"></i> Update Data Siswa</h2>

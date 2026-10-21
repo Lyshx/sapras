@@ -14,7 +14,7 @@ function hitung($k,$t){
   catch(Throwable $x){ return '-'; }
 }
 ?><!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin - Sapras SMKN 1 Maja</title><link rel="stylesheet" href="admin.css"></head><body>
+<title>Admin - Sapras SMKN 1 Maja</title><link rel="stylesheet" href="admin.css"><link rel="stylesheet" href="responsive.css"></head><body>
 <div class="blob b1"></div><div class="blob b2"></div>
 <div class="page">
   <div class="top">

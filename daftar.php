@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
   }
 }
 ?><!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Daftar - Sapras SMKN 1 Maja</title><link rel="stylesheet" href="auth.css"></head><body>
+<title>Daftar - Sapras SMKN 1 Maja</title><link rel="stylesheet" href="auth.css"><link rel="stylesheet" href="responsive.css"></head><body>
 <div class="blob b1"></div><div class="blob b2"></div>
 <div class="auth"><div class="card">
   <div class="logo"><div class="lg">S</div><div><h1>Sapras SMKN 1 Maja</h1><small>Sarana &amp; Prasarana Sekolah</small></div></div>

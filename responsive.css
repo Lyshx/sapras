@@ -1,0 +1,172 @@
+html {
+    scroll-padding-top: 72px;
+}
+
+img {
+    max-width: 100%;
+}
+
+body.entry-form-page {
+    min-height: 100vh;
+    padding: clamp(16px, 4vw, 40px);
+    align-items: flex-start;
+}
+
+body.entry-form-page > form {
+    width: min(100%, 520px);
+    margin: auto;
+    padding: clamp(20px, 5vw, 30px);
+}
+
+body.edit-form-page {
+    min-height: 100vh;
+    padding: clamp(16px, 4vw, 32px);
+    align-items: flex-start;
+}
+
+.edit-form-page .update-card {
+    width: 100%;
+    margin: auto;
+}
+
+.table-scroll,
+.table-responsive {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        min-height: 320px;
+        padding: 32px 18px;
+    }
+
+    .hero-banner h2 {
+        font-size: clamp(1.6rem, 6vw, 2rem);
+    }
+
+    .home-page .container {
+        width: calc(100% - 24px);
+        margin-top: -24px;
+        padding: clamp(18px, 4vw, 28px);
+    }
+
+    .home-page .container section {
+        margin-bottom: 36px;
+    }
+
+    .nav-links {
+        width: 100%;
+    }
+
+    .top {
+        flex-wrap: wrap;
+        padding: 12px 16px;
+    }
+
+    .logo {
+        min-width: 0;
+    }
+
+    .who {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .wrap {
+        padding: 18px 12px 36px;
+    }
+
+    .hero {
+        padding: clamp(20px, 5vw, 28px);
+    }
+
+    .hero h2 {
+        font-size: clamp(1.35rem, 5vw, 1.7rem);
+        overflow-wrap: anywhere;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    }
+
+    .container.py-5 {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    .main-card {
+        padding: 1rem !important;
+    }
+
+    .d-flex.justify-content-between.align-items-center {
+        align-items: flex-start !important;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 1.1rem 1rem;
+    }
+
+    header h1 {
+        font-size: clamp(1.25rem, 6vw, 1.75rem);
+        overflow-wrap: anywhere;
+    }
+
+    nav {
+        justify-content: flex-end;
+    }
+
+    .nav-links a {
+        padding: 10px 8px;
+    }
+
+    .staff-grid,
+    .inventory-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .inventory-card {
+        min-width: 0;
+    }
+
+    .table-scroll table {
+        min-width: 700px;
+    }
+
+    .d-flex.justify-content-between.align-items-center > .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .auth {
+        padding: 12px;
+    }
+
+    .auth .card {
+        padding: 20px;
+    }
+
+    .auth .logo {
+        gap: 9px;
+    }
+
+    .auth .logo h1 {
+        font-size: 17px;
+        overflow-wrap: anywhere;
+    }
+
+    .auth .logo small {
+        font-size: 12px;
+    }
+
+    .edit-form-page .update-card {
+        padding: 20px 16px;
+    }
+}

@@ -58,8 +58,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Sarpras - SMK 1 Maja</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
-<body>
+<body class="home-page">
 
     <header>
         <h1>SMK Negeri 1 Maja</h1>
@@ -186,6 +187,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             <h2>Daftar Peminjaman Aktif</h2>
             <input type="text" id="searchPeminjaman" class="search-box" placeholder="Cari nama peminjam atau nama barang secara instan...">
             
+            <div class="table-scroll">
             <table id="tabelPeminjaman">
                 <thead>
                     <tr>
@@ -219,6 +221,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            </div>
         </section>
 
     </div>

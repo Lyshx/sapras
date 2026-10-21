@@ -33,7 +33,8 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
 
         .table-responsive {
             border-radius: 8px;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
         }
 
         .table thead {
@@ -68,6 +69,7 @@ $data = mysqli_fetch_all($hasil, MYSQLI_ASSOC);
             transform: translateY(-2px);
         }
     </style>
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 <?php include 'admin_nav.php'; ?>

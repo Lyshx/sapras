@@ -193,8 +193,9 @@ $lama = mysqli_fetch_assoc($hasil_lama);
             }
         }
     </style>
+    <link rel="stylesheet" href="responsive.css">
 </head>
-<body>
+<body class="edit-form-page">
 
     <div class="update-card">
         <div class="update-header">

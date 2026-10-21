@@ -28,8 +28,9 @@ if (isset($_POST['submit'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Siswa</title>
     <style>
@@ -99,9 +100,10 @@ if (isset($_POST['submit'])){
             background-color: #1b5e20;
         }
     </style>
+    <link rel="stylesheet" href="responsive.css">
 </head>
 
-<body>
+<body class="entry-form-page">
     <form action="" method="POST">
         <h1>Tambah Siswa</h1>
         
